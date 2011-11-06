@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<!--
+  Google HTML5 slide template
+
+  Authors: Luke Mahé (code)
+           Marcin Wichary (code and design)
+           
+           Dominic Mazzoni (browser compatibility)
+           Charles Chen (ChromeVox support)
+
+  URL: http://code.google.com/p/html5slides/
+-->
+
+<html>
+  <head>
+    <title>API Javascript HTML5</title>
+
+    <meta charset='utf-8'>
+    <script
+      src='../slides.js'></script>
+  </head>
+  
+  <style>
+    /* Your individual styles here, or just use inline styles if that’s
+       what you want. */
+    
+    
+  </style>
+
+  <body style='display: none'>
+
+    <section class='slides layout-regular template-default'>
+      
+      <!-- Your slides (<article>s) go here. Delete or comment out the
+           slides below. -->
+        
+        
+      
+      <!--<article class='biglogo'>
+      </article>-->
+      <!-- #1 -->
+      <article>
+        <h1>
+          API Javascript HTML5
+          <br>
+          
+        </h1>
+        <p>
+          Javier Aguirre
+          <br>
+          7 de Nov de 2011
+        </p>
+      </article>
+      
+      <!-- #2 -->
+      <article>
+        <h3>Índice</h3>
+        <ul class="build">
+            <li><a href ="#3">Offline/Storage</a> <img src="images/HTML5_Offline_Storage.png" /> </li>
+            <li><a href="#">Realtime/Communication</a> <img src="images/HTML5_Connectivity.png" /></li>
+            <li><a href="#">File/Hardware Access</a> <img src="images/HTML5_Device_Access.png" /></li>
+            <li><a href="#">Semantics & Markup</a> <img src="images/HTML5_Offline_Storage.png" /></li>
+            <li><a href="#">Graphics & Multimedia</a> <img src="images/HTML5_Semantics.png" /></li>
+            <li><a href="#">Improvements</a> <img src="images/HTML5_3D_Effects.png" /></li>
+        </ul>
+        <div class='source'>
+          Fuente: <a href="http://slides.html5rocks.com/#table-of-contents">html5rocks.com</a>
+        </div>
+      </article>
+
+      <!-- #3 -->
+      <article>
+        <h3>
+          Web Storage
+        </h3>
+        <p>
+          <strong>Local Storage:</strong> Leer y escribir información en el cliente
+          <strong>Session Storage: </strong> Alternativa a las cookies
+        </p>
+      </article>
+
+      <!-- #4 -->
+      <article>
+        <h3>
+          Comprobar si tenemos funcionalidad
+        </h3>
+        <pre>
+function supports_html5_storage() {
+  try {
+    return 'localStorage' in window 
+        && window['localStorage'] !== null;
+  } catch (e) {
+    return false;
+  }
+}
+        </pre>
+        <div class="source">
+            Fuente: <a href="http://diveintohtml5.info/storage.html">Dive Into HTML5</a>
+        </div>
+      </article>
+      
+      <!-- #5 -->
+      <article>
+        <h3>
+          Comprobar si tenemos funcionalidad (Modernizr)
+        </h3>
+        <pre>
+if (Modernizr.localstorage) {
+  //tenemos localstorage
+} else {
+  //No tenemos local storage
+}
+        </pre>
+        <div class="source">
+            Fuente: <a href="http://diveintohtml5.info/storage.html">Dive Into HTML5</a>
+        </div>
+      </article>
+    
+      <!-- #6 -->
+      <article>
+        <h3>
+          Funcionamiento
+        </h3>
+        <pre>
+//set
+localStorage["myvar"] = '¡local storage mola!';
+localStorage.setItem("otravar", "mi contenido");
+//get
+localStorage["myvar"];
+localStorage.getItem("otravar");
+//otras
+localStorage.clear();
+localStorage.removeItem("myvar");
+localStorage.key(0); 
+        </pre>
+        <ul class="build">
+            <li>Evento: "storage"</li>
+            <li>Lo mismo con <strong>sessionStorage</strong> :-)</li>
+        </ul>
+        <div class="source">
+            <a href="http://dev.w3.org/html5/webstorage/">Más en W3.org</a>
+        </div>
+      </article>
+        
+      <!-- -#7 -->
+      <article>
+        <h3>
+          Web SQL Database
+        </h3>
+        <p></p>
+        <h3>
+          IndexedDB
+        </h3>
+        <p></p>
+      </article>
+
+      <!-- #8 -->
+      <article >
+        <h3>
+          Application Caché
+        </h3>
+        <p>Mantener recursos (js, img, css) en caché si offline</p>
+        <pre>
+CACHE MANIFEST
+# This is a comment
+# Version 9
+CACHE:
+/css/screen.css
+/css/offline.css
+/js/screen.js
+/img/logo.png
+
+http://example.com/css/styles.css
+
+FALLBACK: #archivos no cacheados
+/ /offline.html
+/images/avatars/ /offline_avatar.png
+
+NETWORK: #Recursos cuando online
+*
+        </pre>
+        <div class="source">
+            Fuente: <a href="http://html5doctor.com/go-offline-with-application-cache/">HTML5 Doctor</a>
+        </div>
+      </article>
+
+      <!-- #9 -->
+      <article>
+        <h3>
+          Realtime/Communication
+        </h3>
+        <p>Workers</p>
+        <p>Websockets</p>
+        <p>Notifications</p>
+      </article>
+      
+      <!-- #10 -->
+      <article>
+        <h3>
+          Web Workers
+        </h3>
+        <ul>
+            <li>Ejecutar tareas en background</li>
+            <li>No bloquean la interfaz</li>
+            <li>Concurrentes</li>
+        </ul>
+        <pre>
+function supports_web_workers() {
+  return !!window.Worker; //forzar boolean
+}
+
+//o
+
+if (Modernizr.webworkers) {
+  //¡Podemos usar workers!
+} else {
+  //No podemos usar workers
+}
+        </pre>
+        <div class="source">
+            Fuente: <a href ="http://diveintohtml5.info/detect.html#workers">Dive Into HTML5</a>
+        </div>
+      </article>
+      
+      <!-- #11 -->
+      <article>
+        <h3>
+          Funcionamiento
+        </h3>
+        <pre>
+var worker = new Worker('task.js');
+worker.onmessage = function(event) { alert(event.data); };
+worker.postMessage('data');
+
+//task.js
+self.onmessage = function(event) {
+  // Hacemos algo y publicamos el mensaje.
+  self.postMessage("recv'd: " + event.data);
+};
+        </pre>
+        <ul class="build">
+            <li>Evento Onmessage/Message</li>
+            <li>postMessage</li>
+        </ul>
+        <div class="source">
+            Fuente: <a href="http://slides.html5rocks.com/#web-workers">HTML5Rocks</a>
+        </div>
+      </article>
+      
+      <article>
+        <h3>
+          Websockets
+        </h3>
+        <ul>
+            <li>Conexión full-dúplex bidireccional</li>
+            <li>Sólo se envían los datos, sin las cabeceras HTTP</li>
+            <li>Nuevo protocolo (ws://)</li>
+        </ul>
+      </article>
+
+      <!-- #13 -->
+      <article>
+        <h3>
+          Funcionamiento
+        </h3>
+        <pre>
+var ws = new WebSocket('ws://localhost:3000');
+
+ws.onopen = function() {
+    alert('Connection is established!');
+};
+
+ws.onclose = function() {
+    alert('Connection is closed');
+};
+
+ws.onmessage = function(e) {
+    var message = e.data;
+    alert('Got new message: ' + message);
+};
+
+ws.send('Hello, world!');
+        </pre>
+        <div class='source'>
+          Fuente: <a href ="http://showmetheco.de/articles/2011/2/diving-into-html5-with-websockets-and-perl.html">http://showmetheco.de/</a>
+        </div>
+      </article>
+
+      <!-- #14 -->
+      <article>
+        <h3>
+          Notifications
+        </h3>
+        <ul>
+          <li>Google Chrome</li>
+          <li>Notificaciones fuera navegador</li>
+          <li>Pedir permiso al usuario</li>
+        </ul>
+        <div class='source'>
+          Fuente: <a href="http://blog.frontendforce.com/2010/04/html5-javascript-api-whats-new/">Frontend Force</a>
+        </div>
+      </article>
+
+      <!-- #14 -->
+      <article>
+        <h3>
+          Funcionamiento
+        </h3>
+        <pre>
+if (window.webkitNotifications) {
+  if (window.webkitNotifications.checkPermission() == 0) {
+  // you can pass any url as a parameter
+      window.webkitNotifications.createNotification(
+        tweet.picture, tweet.title,
+        tweet.text).show();
+  } else {
+      window.webkitNotifications.requestPermission();
+  }
+}
+        </pre>
+        <ul>
+            <li>Eventos: ondisplay, onclose</li>
+        </ul>
+        <div class='source'>
+          Fuente: <a href="http://www.html5rocks.com/en/tutorials/notifications/quick/">HTML5Rocks Notifications</a>
+        </div>
+      </article>
+
+      <article>
+        <h3>
+          This slide has some code
+        </h3>
+        <section>
+        <pre>
+&lt;script type='text/javascript'&gt;
+  // Say hello world until the user starts questioning
+  // the meaningfulness of their existence.
+  function helloWorld(world) {
+    for (var i = 42; --i &gt;= 0;) {
+      alert('Hello ' + String(world));
+    }
+  }
+&lt;/script&gt;
+&lt;style&gt;
+  p { color: pink }
+  b { color: blue }
+  u { color: 'umber' }
+&lt;/style&gt;
+</pre>
+        </section>
+      </article>
+      
+      <article class='smaller'>
+        <h3>
+          This slide has some code (small font)
+        </h3>
+        <section>
+        <pre>
+&lt;script type='text/javascript'&gt;
+  // Say hello world until the user starts questioning
+  // the meaningfulness of their existence.
+  function helloWorld(world) {
+    for (var i = 42; --i &gt;= 0;) {
+      alert('Hello ' + String(world));
+    }
+  }
+&lt;/script&gt;
+&lt;style&gt;
+  p { color: pink }
+  b { color: blue }
+  u { color: 'umber' }
+&lt;/style&gt;
+</pre>
+        </section>
+      </article>
+      
+      <article>
+        <q>
+          The best way to predict the future is to invent it.
+        </q>
+        <div class='author'>
+          Alan Kay
+        </div>
+      </article>
+      
+      <article class='smaller'>
+        <q>
+          A distributed system is one in which the failure of a computer 
+          you didn’t even know existed can render your own computer unusable.
+        </q>
+        <div class='author'>
+          Leslie Lamport
+        </div>
+      </article>
+      
+      <article class='nobackground'>
+        <h3>
+          A slide with an embed + title
+        </h3>
+        
+        <iframe src='http://html5demos.com/geo'></iframe>
+      </article>
+
+      <article class='nobackground'>
+        <h3>Soporte navegadores HTML5</h3>
+        <iframe src='http://html5demos.com/'></iframe>
+      </article>
+      
+      <article class='nobackground'>
+        <h3>
+          Consola
+        </h3>
+        <iframe width="420" height="315" src="http://www.youtube.com/embed/4mf_yNLlgic" frameborder="0" allowfullscreen></iframe>
+      </article>
+
+      <article class='nobackground'>
+        <h3>Soporte navegadores HTML5</h3>
+        <iframe src='http://html5demos.com/'></iframe>
+      </article>
+
+      <article>
+        <h3>
+          Referencias
+        </h3>
+        <ul>
+            <li><a href="http://html5rocks.com/">Html5 rocks!</a></li>
+            <li><a href="http://diveintohtml5.info/">Dive Into HTML5</a></li>
+        </ul>
+      </article>
+      
+      <article>
+        <h3>
+          ¿Preguntas?
+        </h3>
+        
+        <ul>
+          <li>
+            <a target="blank" href='http://www.twitter.com/javaguirre'>@javaguirre</a>
+          </li>
+          <li>
+            <a href="http://code.google.com/p/html5slides/" target="blank">HTML5 slides template</a>
+          </li>
+        </ul>
+      </article>
+
+    </section>
+
+  </body>
+</html>
