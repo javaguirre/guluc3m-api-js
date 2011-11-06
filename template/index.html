@@ -42,7 +42,7 @@
       <!-- #1 -->
       <article>
         <h1>
-          API Javascript HTML5
+          <img src="images/html5-mini.png" /> API Javascript HTML5 <img src="images/html5-mini.png" />
           <br>
           
         </h1>
@@ -58,11 +58,10 @@
         <h3>Índice</h3>
         <ul class="build">
             <li><a href ="#3">Offline/Storage</a> <img src="images/HTML5_Offline_Storage.png" /> </li>
-            <li><a href="#">Realtime/Communication</a> <img src="images/HTML5_Connectivity.png" /></li>
-            <li><a href="#">File/Hardware Access</a> <img src="images/HTML5_Device_Access.png" /></li>
-            <li><a href="#">Semantics & Markup</a> <img src="images/HTML5_Offline_Storage.png" /></li>
-            <li><a href="#">Graphics & Multimedia</a> <img src="images/HTML5_Semantics.png" /></li>
-            <li><a href="#">Improvements</a> <img src="images/HTML5_3D_Effects.png" /></li>
+            <li><a href="#">Tiempo Real/Comunicación</a> <img src="images/HTML5_Connectivity.png" /></li>
+            <li><a href="#">Archivos y Acceso Hardware </a> <img src="images/HTML5_Device_Access.png" /></li>
+            <li><a href="#">Gráficos & Multimedia</a> <img src="images/HTML5_Semantics.png" /></li>
+            <li><a href="#">Mejoras</a> <img src="images/HTML5_3D_Effects.png" /></li>
         </ul>
         <div class='source'>
           Fuente: <a href="http://slides.html5rocks.com/#table-of-contents">html5rocks.com</a>
@@ -74,10 +73,10 @@
         <h3>
           Web Storage
         </h3>
-        <p>
-          <strong>Local Storage:</strong> Leer y escribir información en el cliente
-          <strong>Session Storage: </strong> Alternativa a las cookies
-        </p>
+        <ul>
+          <li><strong>Local Storage:</strong> Leer y escribir información en el cliente</li>
+          <li><strong>Session Storage: </strong> Alternativa a las cookies</li>
+        </ul>
       </article>
 
       <!-- #4 -->
@@ -148,11 +147,15 @@ localStorage.key(0);
         <h3>
           Web SQL Database
         </h3>
-        <p></p>
+        <p>Manejo de bases de datos de parte del cliente usando SQL - No mantenida</p>
+        <br />
         <h3>
           IndexedDB
         </h3>
-        <p></p>
+        <p>Manejo de datos clave-valor de forma avanzada</p>
+        <div class="source">
+             Fuentes: <a href="http://www.w3.org/TR/webdatabase/">W3C</a>, <a href="http://www.w3.org/TR/IndexedDB/#introduction">W3C[2]</a>
+        </div>
       </article>
 
       <!-- #8 -->
@@ -188,11 +191,13 @@ NETWORK: #Recursos cuando online
       <!-- #9 -->
       <article>
         <h3>
-          Realtime/Communication
+          Tiempo Real y Comunicación
         </h3>
-        <p>Workers</p>
-        <p>Websockets</p>
-        <p>Notifications</p>
+        <ul>
+            <li>Workers</li>
+            <li>Websockets</li>
+            <li>Notifications</li>
+        </ul>
       </article>
       
       <!-- #10 -->
@@ -327,81 +332,170 @@ if (window.webkitNotifications) {
         </div>
       </article>
 
+      <!-- #15 -->
       <article>
         <h3>
-          This slide has some code
+          Archivos y Hardware
         </h3>
-        <section>
-        <pre>
-&lt;script type='text/javascript'&gt;
-  // Say hello world until the user starts questioning
-  // the meaningfulness of their existence.
-  function helloWorld(world) {
-    for (var i = 42; --i &gt;= 0;) {
-      alert('Hello ' + String(world));
-    }
-  }
-&lt;/script&gt;
-&lt;style&gt;
-  p { color: pink }
-  b { color: blue }
-  u { color: 'umber' }
-&lt;/style&gt;
-</pre>
-        </section>
-      </article>
-      
-      <article class='smaller'>
-        <h3>
-          This slide has some code (small font)
-        </h3>
-        <section>
-        <pre>
-&lt;script type='text/javascript'&gt;
-  // Say hello world until the user starts questioning
-  // the meaningfulness of their existence.
-  function helloWorld(world) {
-    for (var i = 42; --i &gt;= 0;) {
-      alert('Hello ' + String(world));
-    }
-  }
-&lt;/script&gt;
-&lt;style&gt;
-  p { color: pink }
-  b { color: blue }
-  u { color: 'umber' }
-&lt;/style&gt;
-</pre>
-        </section>
+        <ul>
+            <li>Drag & Drop</li>
+            <li>File API</li>
+            <li>Geolocation</li>
+            <li>Speech Input</li>
+        </ul>
       </article>
       
       <article>
-        <q>
-          The best way to predict the future is to invent it.
-        </q>
-        <div class='author'>
-          Alan Kay
-        </div>
-      </article>
-      
-      <article class='smaller'>
-        <q>
-          A distributed system is one in which the failure of a computer 
-          you didn’t even know existed can render your own computer unusable.
-        </q>
-        <div class='author'>
-          Leslie Lamport
-        </div>
-      </article>
-      
-      <article class='nobackground'>
         <h3>
-          A slide with an embed + title
+          Drag & Drop
         </h3>
-        
-        <iframe src='http://html5demos.com/geo'></iframe>
+        <pre>
+document.addEventListener('dragstart', function(event) {
+  event.dataTransfer.setData('text', 'Customized text');
+  event.dataTransfer.effectAllowed = 'copy';
+}, false);
+        </pre>
       </article>
+      
+      <article>
+        <h3>
+          File API
+        </h3>
+        <pre>
+document.querySelector('#dropzone').addEventListener('drop',
+     function(e) {
+  var reader = new FileReader();
+  reader.onload = function(evt) {
+    document.querySelector('img').src = evt.target.result;
+  };
 
+  reader.readAsDataURL(e.dataTransfer.files[0]);
+}, false);
+        </pre>
+        <p>
+            <strong>Eventos: </strong>onprogress, onloadstart, onerror, onabort, onload, onloadend
+        </p>
+        <div class="source">
+            Fuente: <a href="http://slides.html5rocks.com/#drag-in">HTML5 Rocks</a>
+        </div>
+      </article>
+      
+      <article>
+        <h3>
+            Geolocalización
+        </h3>
+        <p>
+            Localización geográfica
+        </p>
+        <pre>
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function(position) {
+    var latLng = new google.maps.LatLng(
+        position.coords.latitude, position.coords.longitude);
+    var marker = new google.maps.Marker({
+                position: latLng, map: map
+            });
+    map.setCenter(latLng);
+  }, errorHandler);
+}
+        </pre>
+        <div class="source">
+            Fuente: <a href="http://slides.html5rocks.com/#geolocation">HTML5 Rocks</a>
+        </div>
+      </article>
+      
+      <article>
+        <h3>
+          Gráficos & Multimedia
+        </h3>
+        <ul>
+            <li>Canvas 2D</li>
+            <li>Canvas 3D</li>
+            <li>SVG</li>
+        </ul>
+      </article>
+      
+      <article>
+        <h3>
+          Mejoras
+        </h3>
+        <ul>
+            <li>Nuevos Selectores</li>
+            <li>Atributos data</li>
+            <li>History API</li>
+        </ul>
+        
+      </article>
+      
+      
+      <article>
+        <h3>
+          Selectores
+        </h3>
+        <pre>
+var el = document.getElementById('section1');
+el.focus();
+
+var els = document.getElementsByTagName('div');
+els[0].focus();
+
+var els = document.getElementsByClassName('section');
+els[0].focus();
+
+var els = document.querySelectorAll("ul li:nth-child(odd)");
+var tds = document.querySelectorAll("table.test > tr > td");
+var el = document.querySelector("table.test > tr > td"); 
+// el == tds[0]
+        </pre>
+        <div class="source">
+            Fuente: <a href="http://slides.html5rocks.com/#new-selectors">HTML5 Rocks</a>
+        </div>
+      </article>
+      
+      <article>
+        <h3>
+          Atributos Data
+        </h3>
+        <p>Añadir nuevos atributos a los tags html</p>
+        <pre>
+//Usando la propiedad getAttribute() del DOM
+var brand = mydiv.getAttribute("data-brand") 
+mydiv.setAttribute("data-brand", "mazda") 
+mydiv.removeAttribute("data-brand") 
+
+//Usando la propiedad del dataset Javascript
+var brand = mydiv.dataset.brand 
+mydiv.dataset.brand='mazda' 
+mydiv.dataset.brand=null 
+        </pre>
+        <div class="source">
+            Fuente: <a href="http://www.javascriptkit.com/dhtmltutors/customattributes.shtml">Javascript Kit</a>
+        </div>
+      </article>
+      
+      <article>
+        <h3>
+          History API
+        </h3>
+        <pre>
+link.addEventListener('click', function(event) {
+  // Añadimos una nueva entrada al historial
+  history.pushState('Contact Page Form', 
+    'Contact Page', '/contact');
+});
+
+// Capturamos navegación y podemos cambiar 
+//el texto del documento cuando cambia en el historial
+window.addEventListener('popstate', function(event) {
+  document.querySelector('h1').innerText = event.state; 
+  // 'Formulario de contacto'
+});
+        </pre>
+        <div class="source">
+            Fuente: <a href="http://slides.html5rocks.com/#history-api">HTML5 Rocks</a>
+        </div>
+      </article>
+      
       <article class='nobackground'>
         <h3>Soporte navegadores HTML5</h3>
         <iframe src='http://html5demos.com/'></iframe>
@@ -414,11 +508,6 @@ if (window.webkitNotifications) {
         <iframe width="420" height="315" src="http://www.youtube.com/embed/4mf_yNLlgic" frameborder="0" allowfullscreen></iframe>
       </article>
 
-      <article class='nobackground'>
-        <h3>Soporte navegadores HTML5</h3>
-        <iframe src='http://html5demos.com/'></iframe>
-      </article>
-
       <article>
         <h3>
           Referencias
@@ -426,7 +515,11 @@ if (window.webkitNotifications) {
         <ul>
             <li><a href="http://html5rocks.com/">Html5 rocks!</a></li>
             <li><a href="http://diveintohtml5.info/">Dive Into HTML5</a></li>
+            <li><a href="http://code.google.com/p/html5slides/" target="blank">HTML5 slides template</a></li>
+            <li><a href="http://dev.w3.org/html5/spec/Overview.html">W3C</a></li>
         </ul>
+        <br />
+        <p>Presentación en... <a href="https://github.com/javaguirre/guluc3m-api-js">github</a></p>
       </article>
       
       <article>
@@ -435,12 +528,17 @@ if (window.webkitNotifications) {
         </h3>
         
         <ul>
+          <li>contacto EN javaguirre PUNTO net</li>
           <li>
-            <a target="blank" href='http://www.twitter.com/javaguirre'>@javaguirre</a>
+            <a href='http://twitter.com/javaguirre'>@javaguirre</a>
           </li>
           <li>
-            <a href="http://code.google.com/p/html5slides/" target="blank">HTML5 slides template</a>
+            <a href='http://www.github.com/javaguirre'>Github</a>
           </li>
+          <li>
+            <a href='http://es.linkedin.com/in/javaguirre'>LinkedIn</a>
+          </li>
+          
         </ul>
       </article>
 
