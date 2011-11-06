@@ -51,6 +51,9 @@
           <br>
           7 de Nov de 2011
         </p>
+        <div class="source">
+            <a href="http://www.gul.uc3m.es/">Jornadas del GUL</a> - Noviembre 2011
+        </div>
       </article>
       
       <!-- #2 -->
@@ -415,6 +418,53 @@ if (navigator.geolocation) {
         </ul>
       </article>
       
+      <article class="smaller">
+        <h3>
+          Canvas 2D
+        </h3>
+        <pre>
+  var canvasContext = document.getElementById("canvas").getContext("2d");
+  canvasContext.fillRect(250, 25, 150, 100);
+  
+  canvasContext.beginPath();
+  canvasContext.arc(450, 110, 100, Math.PI * 1/2, Math.PI * 3/2);
+  canvasContext.lineWidth = 15;
+  canvasContext.lineCap = 'round';
+  canvasContext.strokeStyle = 'rgba(255, 127, 0, 0.5)';
+  canvasContext.stroke();
+        </pre>
+        <div class="source">
+            Fuente: <a href="http://slides.html5rocks.com/#canvas-2d">HTML5 Rocks</a>
+        </div>
+      </article>
+      
+      <article class="smaller">
+        <h3>
+          Canvas 3D
+        </h3>
+        <pre>
+ var gl = document.getElementById("canvas").getContext("experimental-webgl");
+  gl.viewport(0, 0, canvas.width, canvas.height);
+        </pre>
+        <div class="source">
+            Fuente: <a href="http://slides.html5rocks.com/#canvas-3d">HTML5 Rocks</a>
+        </div>
+      </article>
+      
+      <article>
+        <h3>
+          SVG
+        </h3>
+        <svg>
+            <circle id="myCircle" class="important" cx="50%" cy="50%" r="100" 
+            fill="url(#myGradient)"
+            onmousedown="alert('hello');"/>
+        </svg>
+        <div class="source">
+            Fuente: <a href="http://slides.html5rocks.com/#inline-svg">HTML5 Rocks</a>
+        </div>
+      </article>
+      
       <article>
         <h3>
           Mejoras
@@ -430,7 +480,7 @@ if (navigator.geolocation) {
       
       <article>
         <h3>
-          Selectores
+          Nuevos Selectores
         </h3>
         <pre>
 var el = document.getElementById('section1');
@@ -477,6 +527,7 @@ mydiv.dataset.brand=null
         <h3>
           History API
         </h3>
+        <p>Manejo del historial del navegador</p>
         <pre>
 link.addEventListener('click', function(event) {
   // Añadimos una nueva entrada al historial
@@ -510,13 +561,16 @@ window.addEventListener('popstate', function(event) {
 
       <article>
         <h3>
-          Referencias
+          Cómo continuar
         </h3>
         <ul>
-            <li><a href="http://html5rocks.com/">Html5 rocks!</a></li>
+            <li><a href="http://html5rocks.com/">HTML5 rocks!</a></li>
             <li><a href="http://diveintohtml5.info/">Dive Into HTML5</a></li>
             <li><a href="http://code.google.com/p/html5slides/" target="blank">HTML5 slides template</a></li>
             <li><a href="http://dev.w3.org/html5/spec/Overview.html">W3C</a></li>
+            <li><a href="http://html5demos.com/">HTML5 Demos</a></li>
+            <li><a href="http://html5games.com/">HTML5 Games</a></li>
+            <li><a href="http://html5doctor.com/">HTML5 Doctor</a></li>
         </ul>
         <br />
         <p>Presentación en... <a href="https://github.com/javaguirre/guluc3m-api-js">github</a></p>
